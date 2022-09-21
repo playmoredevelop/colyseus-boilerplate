@@ -1,0 +1,40 @@
+{
+  "name": "colyseus-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playmoredevelop/colyseus-boilerplate.git"
+  },
+  "keywords": [
+    "colyseus",
+    "boilerplate"
+  ],
+  "author": "Playmore",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/playmoredevelop/colyseus-boilerplate/issues"
+  },
+  "homepage": "https://github.com/playmoredevelop/colyseus-boilerplate#readme",
+  "dependencies": {
+    "@colyseus/core": "^0.14.32",
+    "@colyseus/monitor": "^0.14.22",
+    "@colyseus/redis-presence": "^0.14.20",
+    "@colyseus/ws-transport": "^0.14.21",
+    "@godaddy/terminus": "^4.11.2",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "pino": "^8.6.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.7.18"
+  }
+}
