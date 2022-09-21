@@ -24,7 +24,7 @@ jspm_packages/
 .env
 .env.dev
 .env.test
-# package-lock.json
+package-lock.json
 
 # cache & bundlers
 dist
