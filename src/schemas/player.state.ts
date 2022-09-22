@@ -1,14 +1,14 @@
 import { Schema, type, ArraySchema } from '@colyseus/schema'
 import { InfinityIterator } from '../service/iterator'
+import { InventoryState } from './inventory.state'
 import { UnitState } from './unit.state'
-import { WeaponsState } from './weapons.state'
 
 export class PlayerState extends Schema {
 
     public allowed: boolean = true
     public unitsIterator: InfinityIterator<number>
     
-    @type(WeaponsState) public weapons = new WeaponsState()
+    @type(InventoryState) public inventory = new InventoryState()
     @type({ array: UnitState }) public units = new ArraySchema<UnitState>()
 
     @type('string') public name: string = 'Player'
@@ -17,6 +17,8 @@ export class PlayerState extends Schema {
 
     public prepare(): this {
         this.unitsIterator = new InfinityIterator(this.units.keys())
+        this.inventory.name = 'Player 1 Inventory'
+        this.inventory.limiter = 5
         return this
     }
 
@@ -44,7 +46,6 @@ export class PlayerState extends Schema {
     public dispose(): void {
         this.units.clear()
         this.units = null
-        this.weapons = null
     }
 
 }
