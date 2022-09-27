@@ -28,6 +28,10 @@ export function randomUniq<T>(values: Array <T>, key: string): T {
     return randomUniq(values, key)
 }
 
+export function randomId(): number {
+    return Number('0x' + Math.random().toString(16).slice(2))
+}
+
 export function isBetweenRange(value: number, rangeMax: number, rangeMin: number) {
     return value >= rangeMin && value <= rangeMax;
 }

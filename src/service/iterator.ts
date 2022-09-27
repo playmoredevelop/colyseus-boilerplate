@@ -4,6 +4,9 @@ export class InfinityIterator<T> {
     protected pos: number = 0
 
     constructor(items: IterableIterator<T>) {
+        this[Symbol.iterator] = () => {
+            return items
+        }
         this.items = Array.from(items)
     }
 
@@ -25,6 +28,5 @@ export class InfinityIterator<T> {
         this.pos = 0
         return this
     }
-
 
 }
