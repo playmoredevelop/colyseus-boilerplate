@@ -21,9 +21,7 @@ jspm_packages/
 
 # environment variables file
 .vscode
-.env
-.env.dev
-.env.test
+.DS_Store
 package-lock.json
 
 # cache & bundlers

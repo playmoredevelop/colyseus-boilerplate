@@ -28,7 +28,7 @@ export class AlternateState extends Schema {
         return this.players.has(session) && this.playersIterator.value() === session
     }
 
-    public active(): PlayerState {
+    public activePlayer(): PlayerState {
         return this.players.get(this.playersIterator.value())
     }
 
@@ -122,7 +122,7 @@ export class AlternateRoom extends Room<AlternateState> {
 
         if (!this.state.isActive(client.sessionId)) return
 
-        const unit = this.state.active().activeUnit()
+        const unit = this.state.activePlayer().activeUnit()
         const changed = unit && [
             unit.move.setWalk(message),
             unit.move.setJump(message),
@@ -176,11 +176,10 @@ export class AlternateRoom extends Room<AlternateState> {
         this.roundIndex++
 
         this.state.playersIterator.next()
-        this.state.active().unitsIterator.next()
+        this.state.activePlayer().unitsIterator.next()
         this.state.players.forEach(player => {
             player.allowed = true
             player.readynext = false
-            player.weapons.deactivate()
             player.units.forEach(b => b.move.reset())
         })
 

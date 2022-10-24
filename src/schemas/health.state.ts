@@ -4,11 +4,11 @@ export class HealthState extends Schema {
 
     @type('uint16') public value: number = 100
     @type('uint16') public damage: number = 0
-    @type('boolean') public dead = false
+    @type('boolean') public isDead = false
 
     public available(): boolean {
 
-        if (this.dead) return false
+        if (this.isDead) return false
         if (this.value <= 0) return false
         if (this.damage >= this.value) return false
 
@@ -25,7 +25,7 @@ export class HealthState extends Schema {
             this.value -= value
         } else {
             this.value = 0
-            this.dead = true
+            this.isDead = true
         }
 
         return true

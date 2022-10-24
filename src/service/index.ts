@@ -11,14 +11,14 @@ import { monitor } from '@colyseus/monitor'
 import { logger } from './logger'
 import { IResponseError, IResponseSession, IServiceOptions } from './interfaces'
 
-config()
+process.env.NODE_ENV !== 'production' && config()
 
 export class Service<T> extends Server {
 
     private $options: IServiceOptions<T> = {
         host: ['0.0.0.0', '8080'],
         redis_host: null,
-        frontend: 'https://mygame.io',
+        frontend: process.env.FRONTEND_HOST ?? 'http://0.0.0.0:8081',
         rooms: []
     }
 
